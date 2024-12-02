@@ -4,7 +4,7 @@ import React, {
   createContext,
 } from "react";
 
-import Router from "./Routes/dashboard.router";
+import Router from "./dashboard.router";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import {
@@ -18,7 +18,7 @@ export const dashBoardContext =
   React.createContext();
 
 function App() {
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebar, setSidebar] = useState(true);
   return (
     <>
       <dashBoardContext.Provider
@@ -27,8 +27,6 @@ function App() {
           setSidebar,
         }}
       >
-        <Navbar />
-        <Sidebar />
         <Router />
         <div className="z-[1000] fixed right-4 bottom-4">
           <TooltipComponent

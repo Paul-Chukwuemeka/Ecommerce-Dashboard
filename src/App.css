@@ -6,6 +6,7 @@
 .sidebar {
   box-shadow:  0px 7px 30px 0px;
   z-index: 10;
+  overflow: scroll;
 }
 button:focus{
   border: none;

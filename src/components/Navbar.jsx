@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { MdOutlineMenu } from "react-icons/md";
 import { dashBoardContext } from "../App.jsx";
+// import '../data/dummy.js'
 
 const Navbar = () => {
   const { sidebar, setSidebar } = useContext(
