@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { dashBoardContext } from "../App.jsx";
+import { dashBoardContext } from "../context/contextProvider.jsx";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { SiShopware } from "react-icons/si";
 import { Link } from "react-router-dom";
@@ -9,13 +9,14 @@ const Sidebar = () => {
   const { sidebar, setSidebar } = useContext(
     dashBoardContext
   );
+
   return (
     <>
       {sidebar && (
-        <div className="w-[350px] h-[100vh] border p-3 sidebar fixed top-0 left-0 bg-white">
+        <div className="w-[350px] h-[100vh] border p-3 px-5 sidebar fixed top-0 left-0 bg-white">
           <div className="flex items-center justify-between">
             <Link to={"/"}>
-              <span className="flex p-2 gap-2 text-2xl items-center">
+              <span className="flex p-2 gap-2 text-2xl font-bold items-center">
                 <SiShopware /> Shoppy
               </span>
             </Link>
@@ -28,16 +29,16 @@ const Sidebar = () => {
               <IoMdCloseCircleOutline />
             </button>
           </div>
-          {links.map((item) => {
-            return (
-              <div>
-                <h1 className="text-xl font-semibold">
-                  {item.title}
-                </h1>
-                <ul className="flex-col gap-1">
-                  {item.links.map((link) => {
-                    return (
-                      <li className="bg-gray-100 p-3 m-2 capitalize text-md flex justify-between items-center rounded-lg hover:bg-gray-200">
+          <div className="mt-8">
+            {links.map((item) => {
+              return (
+                <div key={item.title}>
+                  <h1 className="text-md font-semibold text-[#000000c0]">
+                    {item.title}
+                  </h1>
+                  <ul className="flex-col gap-1">
+                    {item.links.map((link) => {
+                      return (
                         <Link
                           to={
                             link.name ==
@@ -45,17 +46,20 @@ const Sidebar = () => {
                               ? "/"
                               : `/${link.name}`
                           }
+                          key={link.name}
                         >
-                          {link.name}
+                          <li className="bg-gray-100 p-3 m-2 capitalize text-md flex gap-2 items-center rounded-lg hover:bg-gray-200">
+                            {link.icon}
+                            {link.name}
+                          </li>
                         </Link>
-                       <span className="text-xl"> {link.icon}</span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            );
-          })}
+                      );
+                    })}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </>

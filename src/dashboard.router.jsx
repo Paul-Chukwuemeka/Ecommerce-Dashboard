@@ -58,7 +58,7 @@ const router = createBrowserRouter([
         <Sidebar /><Editor /></>       ,
   },
   {
-    path: "/calender",
+    path: "/calendar",
     element:   <><Navbar />
         <Sidebar /><Calendar /></>,
   },
